@@ -1,0 +1,3 @@
+# node_modules和.vscode文件被忽略
+node_modules
+.vscode
