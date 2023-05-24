@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  height: 100vh;
+}
+
+.main {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@keyframes face {
+  0% {
+    background-color: #e2135b;
+  }
+
+  20% {
+    background-color: #ff9e00;
+  }
+
+  80% {
+    background-color: #9ecf00;
+  }
+
+  100% {
+    background-color: #5ee012;
+  }
+}
+
+.face {
+  --delay: -0.9999s;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  /* background-color: pink; */
+  animation: face 1s linear var(--delay) paused;
+}
+
+.eye {
+  position: absolute;
+  top: 30px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+@keyframes leftEye {
+  0% {
+    clip-path: polygon(0 70%, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  60% {
+    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+}
+
+.left {
+  left: 20px;
+  animation: leftEye 1s linear var(--delay) paused;
+}
+
+@keyframes rightEye {
+  0% {
+    clip-path: polygon(0 0, 100% 70%, 100% 100%, 0% 100%);
+  }
+
+  60% {
+    clip-path: polygon(0 0, 100% 10%, 100% 100%, 0% 100%);
+  }
+
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+}
+
+.right {
+  right: 20px;
+  animation: rightEye 1s linear var(--delay) paused;
+}
+
+/* 这段代码暂时不了解 */
+@keyframes mousechange {
+  50% {
+    height: 4px;
+    box-shadow: inset 0 4px 0 #fff;
+    transform: translateY(calc(var(--h) / -1));
+    clip-path: inset(0% 0% 0% 0%);
+  }
+
+  50.1% {
+    height: 4px;
+    box-shadow: inset 0 -4px 0 #fff;
+    transform: translateY(calc(var(--h) / -1));
+    clip-path: inset(50% 0% 0% 0%);
+  }
+
+  to {
+    height: var(--h);
+    box-shadow: inset 0 -50px 0 #fff;
+    transform: translateY(calc(var(--h) / -1));
+    clip-path: inset(50% 0% 0% 0%);
+  }
+}
+
+.mouse {
+  position: absolute;
+  --w: 32px;
+  --h: 32px;
+  width: var(--w);
+  height: var(--h);
+  bottom: -15px;
+  left: 34%;
+  /* background: #f40; */
+  border-radius: var(--w);
+  box-shadow: inset 0 2px 0 #fff;
+  animation: mousechange 1s linear var(--delay) paused;
+  transform: translateY(calc(var(--h) / -2));
+}
